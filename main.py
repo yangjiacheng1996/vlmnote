@@ -14,13 +14,14 @@ project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(project_root)
 from settings import workspace
 from settings import video, video_language
-from settings import base_url, api_key, model_name
+from settings import vlm_base_url, vlm_api_key, vlm_model_name
 from py3lib.logsystem import logger
 from py3lib.commandline import run_command
 from py3lib.openai_compatible import OpenAICompatible
 from py3lib.filesystem import dir_writable, get_path_filename, get_path_extension
 from py3lib.pdf_no_re import save_frame_to_dir
 from py3lib import correction
+from py3lib.md2pdf import md_to_pdf
 from py3lib.assenble import generate_video_markdown
 
 # secondary library
@@ -46,7 +47,7 @@ def main():
         logger.error(f"AI自动做笔记工具停止运行。")
         sys.exit(1)
     # 提前创建OpenAI Compatible客户端,对象创建成功时，说明大模型已经连通了。
-    client = OpenAICompatible(base_url=base_url, api_key=api_key, model_name=model_name)
+    client = OpenAICompatible(base_url=vlm_base_url, api_key=vlm_api_key, model_name=vlm_model_name)
     logger.info("大模型连接成功！")
     # 基于视频文件的路径和文件名，在工作目录中创建与文件名（不包含扩展名）相同的目录
     video_name = get_path_filename(video)
@@ -89,6 +90,10 @@ def main():
     logger.info("开始生成关键帧与语音转录汇总的markdown文件...")
     md_path = generate_video_markdown(frames_dir, tsv_path)
     logger.info(f"关键帧与语音转录汇总文件已生成：{md_path}")
+    # 将markdown转换为PDF
+    logger.info("开始将markdown转换为PDF...")
+    pdf_path = md_to_pdf(md_path)
+    logger.info(f"PDF文件已生成：{pdf_path}")
 
 
 if __name__ == '__main__':

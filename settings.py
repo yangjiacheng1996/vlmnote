@@ -14,6 +14,6 @@ video = os.path.join(workspace, "过期米老鼠.mp4")
 video_language = "Chinese"
 
 # 大模型基础配置
-VLM_BASE_URL = "https://api.siliconflow.cn"
-VLM_API_KEY = "sk-psggkotzdnaurduuivmqteqzimlgetzisdgdhvvzmfhzkxoo"
-VLM_MODEL_NAME = "Qwen/Qwen3-VL-235B-A22B-Thinking"
+vlm_base_url = "https://api.siliconflow.cn"
+vlm_api_key = "sk-psggkotzdnaurduuivmqteqzimlgetzisdgdhvvzmfhzkxoo"
+vlm_model_name = "Qwen/Qwen3-VL-235B-A22B-Thinking"

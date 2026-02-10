@@ -21,7 +21,7 @@ from typing import List, Tuple
 
 from py3lib.logsystem import logger
 from py3lib.openai_vl_compatible import OpenAIVLCompatible
-from settings import VLM_BASE_URL, VLM_API_KEY, VLM_MODEL_NAME
+from settings import vlm_base_url, vlm_api_key, vlm_model_name
 
 
 # 常量定义
@@ -169,9 +169,9 @@ def correct_transcription(text: str, frame_path: str) -> str:
     try:
         # 创建VLM客户端
         client = OpenAIVLCompatible(
-            base_url=VLM_BASE_URL,
-            api_key=VLM_API_KEY,
-            model_name=VLM_MODEL_NAME
+            base_url=vlm_base_url,
+            api_key=vlm_api_key,
+            model_name=vlm_model_name
         )
         
         # 调用VLM进行纠错
@@ -228,7 +228,7 @@ def replace_content(corrected_text: str, tsv_path: str) -> None:
             if key in corrected_dict:
                 # 使用纠错后的文本
                 new_lines.append(f"{start}\t{end}\t{corrected_dict[key]}")
-                logger.info(f"替换时间戳 {start}-{end} 的内容")
+                # logger.info(f"替换时间戳 {start}-{end} 的内容")
             else:
                 # 保留原内容
                 new_lines.append(line.strip())

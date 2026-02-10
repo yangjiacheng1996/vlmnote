@@ -27,6 +27,7 @@ pip install -U openai-whisper openai
 sudo apt update && apt install -y ffmpeg
 
 # 安装evp
+apt install -y libgtk2.0-dev  pkg-config
 pip install extract-video-ppt
 pip install fpdf2==2.8.4  # 如果安装fpdf2==2.8.5，在evp命令执行时会出现报错，图片无法写入pdf中。
 
@@ -59,6 +60,7 @@ pip install -U openai-whisper openai
 sudo apt update && apt install -y ffmpeg
 
 # 安装evp
+apt install -y libgtk2.0-dev  pkg-config
 pip install extract-video-ppt
 pip install fpdf2==2.8.4  # 如果安装fpdf2==2.8.5，在evp命令执行时会出现报错，图片无法写入pdf中。
 

@@ -66,4 +66,4 @@ project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(project_root)
 from settings import workspace
 log_dir = os.path.join(workspace, "logs")
-logger = setup_logger(logger_name="llmnote", log_dir=log_dir, log_file="llmnote.log", log_level=logging.INFO, add_filehandler=True, add_streamhandler=True)
+logger = setup_logger(logger_name="vlmnote", log_dir=log_dir, log_file="vlmnote.log", log_level=logging.INFO, add_filehandler=True, add_streamhandler=True)
