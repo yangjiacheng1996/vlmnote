@@ -34,7 +34,8 @@ class OpenAICompatible:
         # 验证用户配置是否有效，包括base_url, api_key, model_name.有一些供应商没有提供模型列表/v1/models，所以配置检测跳过。
         # self._validate_configuration()
         # 测试模型是否可用
-        self._test_model_availability()
+        if not self._test_model_availability():
+            raise ValueError(f"模型 {self.model_name} 不可用")
 
 
     def get_available_models(self):
